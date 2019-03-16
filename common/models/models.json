@@ -1,5 +1,6 @@
 {
   "name": "Models",
+  "plural": "models",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -10,13 +11,46 @@
       "type": "string",
       "required": true
     },
+    "startProductionDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
+    },
     "brandId": {
-      "type": "string",
+      "type": "number",
       "required": true
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+  "relations": {
+    "cars": {
+      "type": "hasMany",
+      "model": "Cars",
+      "foreignKey": "modelId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {
+    "searchByName": {
+      "accepts": {
+        "arg": "name",
+        "type": "string"
+      },
+      "returns": {
+        "arg": "brands",
+        "type": "array"
+      },
+      "http": {
+        "verb": "get"
+      }
+    }
+  }
 }

@@ -13,15 +13,11 @@
       "./mixins"
     ]
   },
-  "Users": {
-    "dataSource": "db",
-    "public": true
-  },
-  "AccessToken": {
+  "ACL": {
     "dataSource": "db",
     "public": false
   },
-  "ACL": {
+  "AccessToken": {
     "dataSource": "db",
     "public": false
   },
@@ -36,7 +32,15 @@
     "dataSource": "db",
     "public": false
   },
-  "Cars": {
+  "User": {
+    "dataSource": "db",
+    "public": false
+  },
+  "Users": {
+    "dataSource": "db",
+    "public": true
+  },
+  "Brands": {
     "dataSource": "db",
     "public": true
   },
@@ -44,7 +48,7 @@
     "dataSource": "db",
     "public": true
   },
-  "Brands": {
+  "Cars": {
     "dataSource": "db",
     "public": true
   }

@@ -1,112 +1,27 @@
 {
-  "name": "User",
-  "properties": {
-    "realm": {
-      "type": "string"
-    },
-    "username": {
-      "type": "string"
-    },
-    "password": {
-      "type": "string",
-      "required": true
-    },
-    "email": {
-      "type": "string",
-      "required": true
-    },
-    "emailVerified": "boolean",
-    "verificationToken": "string"
-  },
+  "name": "Users",
+  "plural": "users",
+  "base": "User",
+  "idInjection": true,
   "options": {
-    "caseSensitiveEmail": true
+    "validateUpsert": true
   },
-  "hidden": ["password", "verificationToken"],
-  "acls": [
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
+  "properties": {
+    "fullName": {
+      "type": "string"
     },
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "create"
+    "isAdmin": {
+      "type": "boolean",
+      "default": false
     },
-    {
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "deleteById"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "login"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "logout"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "findById"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "patchAttributes"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$owner",
-      "permission": "ALLOW",
-      "property": "replaceById"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "verify",
-      "accessType": "EXECUTE"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "confirm"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "ALLOW",
-      "property": "resetPassword",
-      "accessType": "EXECUTE"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW",
-      "property": "changePassword",
-      "accessType": "EXECUTE"
-    },
-    {
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW",
-      "property": "setPassword",
-      "accessType": "EXECUTE"
+    "isSuperAdmin": {
+      "type": "boolean",
+      "default": false
     }
-  ],
+  },
+  "validations": [],
   "relations": {
-    "accessTokens": {
+    "accessToken": {
       "type": "hasMany",
       "model": "AccessToken",
       "foreignKey": "userId",
@@ -114,5 +29,7 @@
         "disableInclude": true
       }
     }
-  }
+  },
+  "acls": [],
+  "methods": {}
 }

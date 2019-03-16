@@ -1,5 +1,6 @@
 {
   "name": "Brands",
+  "plural": "brands",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -9,10 +10,49 @@
     "name": {
       "type": "string",
       "required": true
+    },
+    "companyName": {
+      "type": "string"
+    },
+    "companyLocation": {
+      "type": "string"
+    },
+    "establishDate": {
+      "type": "date"
+    },
+    "description": {
+      "type": "string"
     }
   },
   "validations": [],
-  "relations": {},
-  "acls": [],
-  "methods": {}
+  "relations": {
+    "models": {
+      "type": "hasMany",
+      "model": "Models",
+      "foreignKey": "brandId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {
+    "searchByName": {
+      "accepts": {
+        "arg": "name",
+        "type": "string"
+      },
+      "returns": {
+        "arg": "brands",
+        "type": "array"
+      },
+      "http": {
+        "verb": "get"
+      }
+    }
+  }
 }

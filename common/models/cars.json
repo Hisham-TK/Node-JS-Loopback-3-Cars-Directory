@@ -1,5 +1,6 @@
 {
   "name": "Cars",
+  "plural": "cars",
   "base": "PersistedModel",
   "idInjection": true,
   "options": {
@@ -11,12 +12,60 @@
       "required": true
     },
     "modelId": {
-      "type": "string",
+      "type": "number",
       "required": true
+    },
+    "productionYear": {
+      "type": "date"
+    },
+    "weight": {
+      "type": "number"
+    },
+    "topSpeed": {
+      "type": "number"
+    },
+    "cylinders": {
+      "type": "string"
+    },
+    "engine": {
+      "type": "string"
+    },
+    "torque": {
+      "type": "string"
+    },
+    "fuelType": {
+      "type": "string"
+    },
+    "doorsNumber": {
+      "type": "number"
+    },
+    "description": {
+      "type": "string"
     }
   },
   "validations": [],
   "relations": {},
-  "acls": [],
-  "methods": {}
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$unauthenticated",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {
+    "searchByName": {
+      "accepts": {
+        "arg": "name",
+        "type": "string"
+      },
+      "returns": {
+        "arg": "brands",
+        "type": "array"
+      },
+      "http": {
+        "verb": "get"
+      }
+    }
+  }
 }
