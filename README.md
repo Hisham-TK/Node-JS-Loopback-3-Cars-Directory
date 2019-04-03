@@ -20,7 +20,7 @@ Additional N.B
 - No one should be able to use any endpoints in your API unless he provides a token in the authorization header (except for login and register endpoints).
 
 
-# My Result
+# My Results
 - Users have isAdmin and isSuperAdmin properties for Authentication
 - You can register as (User, Admin, SuperAdmin) by POST method.
  then to generate the token users/login
