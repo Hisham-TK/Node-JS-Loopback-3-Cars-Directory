@@ -11,7 +11,7 @@
     "posttest": "npm run lint"
   },
   "dependencies": {
-    "compression": "^1.0.3",
+    "compression": "^1.7.4",
     "cors": "^2.5.2",
     "helmet": "^3.10.0",
     "loopback": "^3.22.0",
